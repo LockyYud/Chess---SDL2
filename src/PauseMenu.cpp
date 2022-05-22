@@ -13,6 +13,7 @@ PauseMenu::PauseMenu()
     TypeChess = Type_Chess;
     Music_On = MusicOn;
     state = PauseGameChoice::TOTAL_PAUSE;
+    hiendan = 0;
 }
 
 void PauseMenu::setPauseMenu()
@@ -22,6 +23,7 @@ void PauseMenu::setPauseMenu()
     TypeChess = Type_Chess;
     Music_On = MusicOn;
     SoundEffect_On = SoundEffectOn;
+    hiendan = 0;
 }
 
 PauseGameChoice PauseMenu::HandleEventMouse()
@@ -161,6 +163,7 @@ PauseGameChoice PauseMenu::HandleEventMouse()
 
 void PauseMenu::renderPauseMenu()
 {
+    ImageMenu->setAlpha(255);
     ImageMenu->render(viensetting, viensetting);
     SDL_Rect src, dst;
     switch(state)
@@ -267,4 +270,11 @@ void PauseMenu::renderPauseMenu()
         dst = {145 + viensetting,320 + viensetting,60,60};
         ChoiceMenu->render(src,dst);
     }
+}
+
+void PauseMenu::renderImagePauseMenu()
+{
+    hiendan = hiendan + 15;
+    ImageMenu->setAlpha(hiendan);
+    ImageMenu->render(viensetting, viensetting);
 }

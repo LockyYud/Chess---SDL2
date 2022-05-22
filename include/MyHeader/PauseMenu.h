@@ -17,7 +17,6 @@ enum PauseGameChoice{
 };
 
 class PauseMenu{
-    // SDL_Point 
     int viensetting;
     SDL_Point MousePos;
     MyTexture* ImageMenu;
@@ -28,8 +27,10 @@ class PauseMenu{
     bool TypeChess;
     bool Music_On, SoundEffect_On;
     public:
+    Uint8 hiendan;
     PauseMenu();
     PauseGameChoice HandleEventMouse();
+    void renderImagePauseMenu();
     void setPauseMenu();
     void renderPauseMenu();
 };

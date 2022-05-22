@@ -179,6 +179,7 @@ void GameState::InPauseGame()
 	Game_Loop->LoadOptionToScreen();
 	Game_Loop->LoadPiecesToScreen();
 	Game_Loop->PlayerTime();
-	Pause_menu->renderPauseMenu();
+	if(Pause_menu->hiendan + 15 > 255) Pause_menu->renderPauseMenu();
+	else Pause_menu->renderImagePauseMenu();
 	SDL_RenderPresent(gameRenderer);
 }

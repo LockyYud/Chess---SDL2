@@ -147,6 +147,18 @@ void GameLoop::LoadGameBoardtoScreen()
 
 void GameLoop::PlayerTime()
 {
+    Uint32 timenow = SDL_GetTicks();
+    if (result == Game_Result::TRONG)
+    {
+        if (luot_choi)
+        {
+            WhiteTime = (timetoPlay - BlackTime - (timenow - StartTime));
+        }
+        else
+        {
+            BlackTime = (timetoPlay - WhiteTime - (timenow - StartTime));
+        }
+    }
     std::stringstream timeWhite, timeBlack;
     timeWhite.str("");
     if (WhiteTime / 60000 < 10)
@@ -180,7 +192,7 @@ void GameLoop::PlayerTime()
     else
         textColor = {128, 128, 128, 255};
     GameFont.renderText(timeBlack.str().c_str(), textColor);
-    GameFont.render((window_height - GameFont.get_width()) / 2, 0);
+    GameFont.render((window_height - GameFont.get_width()) / 2, 40 - GameFont.get_height());
     if (luot_choi)
         textColor = {255, 255, 255, 255};
     else
@@ -248,18 +260,6 @@ void GameLoop::EventMouse()
                     End_Game.first = Game_Result::TRONG;
                     break;
             }
-    }
-    Uint32 timenow = SDL_GetTicks();
-    if (result == Game_Result::TRONG)
-    {
-        if (luot_choi)
-        {
-            WhiteTime = (timetoPlay - BlackTime - (timenow - StartTime));
-        }
-        else
-        {
-            BlackTime = (timetoPlay - WhiteTime - (timenow - StartTime));
-        }
     }
 }
 
