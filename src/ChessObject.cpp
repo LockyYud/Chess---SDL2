@@ -10,6 +10,7 @@ ChessObject::ChessObject(chess_object OJ)
     on = false;
     do_mo = 255;
     su_thay_doi_do_mo = 15;
+    vien = ( window_height - 8 * size_img_chess) / 2;
 }
 ChessObject::~ChessObject()
 {

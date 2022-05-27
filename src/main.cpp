@@ -16,22 +16,7 @@ int main(int argc, char* args[])
 			}
 			game->HandleMouseEvent();
 		}
-		switch(game->getState())
-		{
-			case state::IN_GAME:
-				game->InGame();
-				break;
-			case state::MENU_GAME:
-				game->InMenu();
-				break;
-			case state::SETTING_GAME:
-				game->InSetting();
-				break;
-			case state::PAUSE_MENU:
-				game->InPauseGame();
-			default:
-				break;
-		}
+		game->RenderImage();
 	}
 	Image->close();
 	return 0;

@@ -1,7 +1,6 @@
 #pragma once
 #include "GameLoop.h"
-#include "GameMenu.h"
-#include "PauseMenu.h"
+#include "BoardMenu.h"
 enum state{
     IN_GAME,
     END_GAME,
@@ -14,13 +13,15 @@ enum state{
 class GameState{
     private:
     GameLoop* Game_Loop;
-    GameMenu* Game_Choice;
-    PauseMenu* Pause_menu;
+    PauseMenu* Pause;
+    SettingMenu* Setting;
+    MainMenu* Main;
     state trang_thai;
     public:
     GameState();
     ~GameState();
     void HandleMouseEvent();
+    void RenderImage();
     void InGame();
     void InMenu();
     void InSetting();   

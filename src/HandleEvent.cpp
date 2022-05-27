@@ -11,6 +11,7 @@ HandleMouse::HandleMouse(bool &luotchoi)
     MousePos.x = 0;
     MousePos.y = 0;
     luot_choi = &luotchoi;
+    vien = ( window_height - 8 * size_img_chess) / 2;
 }
 
 HandleMouse::HandleMouse()

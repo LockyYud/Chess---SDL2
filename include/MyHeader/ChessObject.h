@@ -28,7 +28,7 @@ class Map
 {
     std::vector<std::vector<std::pair<int, bool *>>> mapp;
 
-public:
+    public:
     Map();
     ~Map();
     void SetChessPos(chess_man **, chess_man **);
@@ -47,7 +47,7 @@ private:
     SDL_Point pos;
     chess_object chessOJ;
     MyTexture* ObjectTex;
-
+    int vien;
 public:
     bool on;
     ChessObject(chess_object);

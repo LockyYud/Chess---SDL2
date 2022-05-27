@@ -18,6 +18,7 @@ enum Game_Result{
 };
 class HandleMouse{
     private:
+    int vien;
     SDL_Point MousePos;
     bool da_chon = false;
     bool* luot_choi;

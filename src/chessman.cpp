@@ -8,6 +8,7 @@ chess_man::chess_man()
     chessTex = new MyTexture;
     pos.x = 0;
     pos.y = 0;
+    vien = (window_height - 8 * size_img_chess) / 2;
 }
 void chess_man::Setposition(const int &x, const int &y)
 {

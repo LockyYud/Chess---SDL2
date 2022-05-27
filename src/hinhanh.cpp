@@ -9,12 +9,12 @@ MyTexture black_chess[7];
 MyTexture white_chess3d[7];
 MyTexture black_chess3d[7];
 MyTexture Object[int(chess_object::TOTAL_OBJECT)];
-MyTexture Choices[int(G_Choice::TOTAL_CHOICE)];
 MyTexture ingame[3];
 MyTexture option[int(Option::TOTAL_OPTION)];
 MyTexture BackGround;
 MyTexture GameFont;
 MyTexture EndGame[2];
+MyTexture ImageMenu[TypeBoardMenu::TOTAL_MENU];
 MyTexture PauseGame[2];
 Mix_Chunk* PeiceIn = NULL;
 Mix_Chunk* PeiceOut = NULL;
@@ -88,12 +88,6 @@ void image::loadMedia()
     Object[int(chess_object::PEICE_CAN_EAT)].loadfromfile("D:/MyGame/Chess/images/Can_eat.png");
     Object[int(chess_object::KING_IS_ATTACKED)].loadfromfile("D:/MyGame/Chess/images/Vua.png");
 
-    Choices[int(G_Choice::MENU)].loadfromfile("D:/MyGame/Chess/images/Menu.png");
-    Choices[int(G_Choice::MENU_CHOICE)].loadfromfile("D:/MyGame/Chess/images/Menu_choice.png");
-    Choices[int(G_Choice::_SETTING)].loadfromfile("D:/MyGame/Chess/images/Setting.png");
-    Choices[int(G_Choice::_SETTING_CHOICE)].loadfromfile("D:/MyGame/Chess/images/Setting_choice.png");
-    Choices[int(G_Choice::_SETTING_CHOOSES)].loadfromfile("D:/MyGame/Chess/images/Setting_chooses.png");
-
     ingame[int(Game_Result::BLACK_WIN)].loadfromfile("D:/MyGame/Chess/images/Bwin.png");
     ingame[int(Game_Result::WHITE_WIN)].loadfromfile("D:/MyGame/Chess/images/Wwin.png");
     ingame[int(Game_Result::DRAW)].loadfromfile("D:/MyGame/Chess/images/Draw.png");
@@ -113,6 +107,16 @@ void image::loadMedia()
 
     PauseGame[0].loadfromfile("D:/MyGame/Chess/images/MenuInGame.png");
     PauseGame[1].loadfromfile("D:/MyGame/Chess/images/MenuInGameChooses.png");
+
+    ImageMenu[TypeBoardMenu::MAIN_MENU].loadfromfile("D:/MyGame/Chess/images/Menu.png");
+    ImageMenu[TypeBoardMenu::MAIN_MENU_CHOOSES].loadfromfile("D:/MyGame/Chess/images/Menu_choice.png");
+    ImageMenu[TypeBoardMenu::END_GAME_BOARD].loadfromfile("D:/MyGame/Chess/images/EndGameChoice.png");
+    ImageMenu[TypeBoardMenu::END_GAME_CHOOSES].loadfromfile("D:/MyGame/Chess/images/chess.png");
+    ImageMenu[TypeBoardMenu::PAUSE_MENU_].loadfromfile("D:/MyGame/Chess/images/MenuInGame.png");
+    ImageMenu[TypeBoardMenu::PAUSE_MENU_CHOOSES].loadfromfile("D:/MyGame/Chess/images/MenuInGameChooses.png");
+    ImageMenu[TypeBoardMenu::SEETING_MENU_BOARD].loadfromfile("D:/MyGame/Chess/images/Setting.png");
+    ImageMenu[TypeBoardMenu::SEETING_MENU].loadfromfile("D:/MyGame/Chess/images/Setting_choice.png");
+    ImageMenu[TypeBoardMenu::SEETING_MENU_CHOOSES].loadfromfile("D:/MyGame/Chess/images/Setting_chooses.png");
 }
 
 void image::close()

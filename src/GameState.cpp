@@ -4,9 +4,11 @@ bool MusicOn = true, SoundEffectOn = true;
 GameState::GameState()
 {
     Game_Loop = new GameLoop;
-	Game_Choice = new GameMenu;
-	Pause_menu = new PauseMenu;
+	Setting = new SettingMenu;
+	Pause = new PauseMenu;
+	Main = new MainMenu;
     trang_thai = state::MENU_GAME; 
+    Mix_PlayMusic( Music, -1 );
 }
 
 GameState::~GameState()
@@ -53,14 +55,14 @@ void GameState::HandleMouseEvent()
 				if(Game_Loop->OptiongChoice == Option::OPTION)
 				{
 					trang_thai = state::PAUSE_MENU;
-					Pause_menu->setPauseMenu();
+					Pause->SetToDefault();
 				}
 			}
 			break;
 		case state::MENU_GAME:
-			switch(Game_Choice->EventMouseMenu())
+			switch(Main->HandleMouseEvent())
 			{
-				case MenuChoice::PLAY:
+				case MenuMainChoice::MENU_MAIN_PLAY:
 					trang_thai = state::IN_GAME;
 					delete Game_Loop;
 					Game_Loop = new GameLoop;
@@ -68,27 +70,27 @@ void GameState::HandleMouseEvent()
 					Game_Loop->SetTime();
 					Game_Loop->StartTime = SDL_GetTicks();
 					break;
-				case MenuChoice::SETTING:
+				case MenuMainChoice::MENU_MAIN_SETTING:
 					trang_thai = state::SETTING_GAME;
-					Game_Choice->bat_dau = 400;
+					Setting->SetToDefault();
 					break;
-				case MenuChoice::QUIT:
+				case MenuMainChoice::MENU_MAIN_QUIT:
 					trang_thai = state::QUIT_GAME;
 				default:
 					break;
 			}
 			break;
 		case state::PAUSE_MENU:
-			switch(Pause_menu->HandleEventMouse())
+			switch(Pause->HandleMouseEvent())
 			{
-				case PauseGameChoice::PAUSE_BACK:
+				case MenuPauseChoice::MENU_PAUSE_BACK:
 					trang_thai = state::IN_GAME;
 					Game_Loop->SetTypeChess();
 					break;
-				case PauseGameChoice::PAUSE_MENU_MAIN:
+				case MenuPauseChoice::MENU_PAUSE_MENU_MAIN:
 					trang_thai = state::MENU_GAME;
 					break;
-				case PauseGameChoice::PAUSE_NEW_GAME:
+				case MenuPauseChoice::MENU_PAUSE_NEW_GAME:
 					trang_thai = state::IN_GAME;
 					delete Game_Loop;
 					Game_Loop = new GameLoop;
@@ -96,17 +98,7 @@ void GameState::HandleMouseEvent()
 					Game_Loop->SetTime();
 					Game_Loop->StartTime = SDL_GetTicks();
 					break;
-				default:
-					break;
-			}
-			break;
-		case state::SETTING_GAME:
-			switch(Game_Choice->EventMouseSetting())
-			{
-				case SettingChoice::BACK:
-					trang_thai = state::MENU_GAME;
-					break;
-				case SettingChoice::SAVE:
+				case MenuPauseChoice::MENU_PAUSE_SAVE:
 					if(MusicOn)
 					{
 						if( Mix_PlayingMusic() == 0 )
@@ -123,10 +115,36 @@ void GameState::HandleMouseEvent()
 						}
 					}
 					break;
-				case SettingChoice::MUSIC:
+				default:
 					break;
-				case SettingChoice::SOUND:
-					SoundEffectOn = !SoundEffectOn;
+			}
+			break;
+		case state::SETTING_GAME:
+			switch(Setting->HandleMouseEvent())
+			{
+				case MenuSettingChoice::MENU_SETTING_BACK:
+					trang_thai = state::MENU_GAME;
+					break;
+				case MenuSettingChoice::MENU_SETTING_SAVE:
+					if(MusicOn)
+					{
+						if( Mix_PlayingMusic() == 0 )
+						{
+							//Play the music
+							Mix_PlayMusic( Music, -1 );
+						}
+					}
+					else{
+						if( Mix_PlayingMusic() != 0 )
+						{
+							//Stop the music
+							Mix_HaltMusic();
+						}
+					}
+					break;
+				case MenuSettingChoice::MENU_SETTING_MUSIC:
+					break;
+				case MenuSettingChoice::MENU_SETTING_SOUND:
 					break;
 				default:
 					break;
@@ -157,8 +175,7 @@ void GameState::InMenu()
 {
 	SDL_SetRenderDrawColor(gameRenderer, 108, 108, 108, 0);
 	SDL_RenderClear(gameRenderer);
-	Game_Choice->renderMenuGame();
-	Game_Choice->renderMenuGameChooses();
+	Main->Render_to_screen();
 	SDL_RenderPresent(gameRenderer);
 }
 
@@ -166,8 +183,8 @@ void GameState::InSetting()
 {
 	SDL_SetRenderDrawColor(gameRenderer, 108, 108, 108, 0);
 	SDL_RenderClear(gameRenderer);
-	Game_Choice->renderSetting();
-	if(Game_Choice->bat_dau == 70) Game_Choice->renderSettingChooses();
+	Setting->Render_Board();
+	if(Setting->appear == 255) Setting->Render_to_screen();
 	SDL_RenderPresent(gameRenderer);
 }
 
@@ -179,7 +196,26 @@ void GameState::InPauseGame()
 	Game_Loop->LoadOptionToScreen();
 	Game_Loop->LoadPiecesToScreen();
 	Game_Loop->PlayerTime();
-	if(Pause_menu->hiendan + 15 > 255) Pause_menu->renderPauseMenu();
-	else Pause_menu->renderImagePauseMenu();
+	Pause->Render_to_screen();
 	SDL_RenderPresent(gameRenderer);
+}
+
+void GameState::RenderImage()
+{
+	switch(this->getState())
+		{
+			case state::IN_GAME:
+				this->InGame();
+				break;
+			case state::MENU_GAME:
+				this->InMenu();
+				break;
+			case state::SETTING_GAME:
+				this->InSetting();
+				break;
+			case state::PAUSE_MENU:
+				this->InPauseGame();
+			default:
+				break;
+		}
 }

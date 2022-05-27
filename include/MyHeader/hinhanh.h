@@ -8,7 +8,6 @@
 const int window_height = 640;
 const int window_width = 640;
 const int size_img_chess = 60;
-const int vien =( window_height - 8 * size_img_chess) / 2;
 class image{
     public:
     image() {};

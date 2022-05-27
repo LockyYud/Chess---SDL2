@@ -15,6 +15,7 @@ class chess_man{
     SDL_Point pos;
     name_chess name;
     bool isWhite;
+    int vien;
     public:
     MyTexture* chessTex;
     bool isLive = true;

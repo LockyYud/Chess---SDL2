@@ -19,13 +19,14 @@
 #include "Rook.h"
 #include "Bishop.h"
 #include "ChessObject.h"
-#include "GameMenu.h"
+#include "BoardMenu.h"
 extern SDL_Window* gameWindow;
 extern SDL_Renderer* gameRenderer;
 extern TTF_Font* gFont;
 extern Mix_Chunk* PeiceIn;
 extern Mix_Chunk* PeiceOut;
 extern Mix_Music* Music;
+extern SDL_Event e;
 
 extern MyTexture chessboard;
 extern MyTexture MenuGame;
@@ -34,20 +35,19 @@ extern MyTexture white_chess[7];
 extern MyTexture black_chess[7];
 extern MyTexture white_chess3d[7];
 extern MyTexture black_chess3d[7];
-extern SDL_Event e;
 extern MyTexture Object[int(chess_object::TOTAL_OBJECT)];
-extern MyTexture Choices[int(G_Choice::TOTAL_CHOICE)];
 extern MyTexture ingame[3];
 extern MyTexture option[int(Option::TOTAL_OPTION)];
 extern MyTexture BackGround;
 extern MyTexture GameFont;
 extern MyTexture EndGame[2];
 extern MyTexture PauseGame[2];
+extern MyTexture ImageMenu[TypeBoardMenu::TOTAL_MENU];
 extern bool dung;
 extern bool sai;
 extern Map Maps[MapStep::total_step];
 extern bool Type_Chess;
-extern int TimeofGame;
+//dieu kien nhap thanh
 extern bool can_castleW_L;
 extern bool can_castleW_R;
 extern bool can_castleB_L;
@@ -58,3 +58,5 @@ extern bool SoundEffectOn;
 extern bool CanEatOn;
 extern bool CanGoOn;
 extern bool KingIsAttackedOn;
+//thoi gian cua moi ben nguoi choi
+extern int TimeofGame;
