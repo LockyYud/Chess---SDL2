@@ -30,27 +30,25 @@ Project uses:
 
 ## Contents
 
-#### How to play
+#### Basic rules of chess
 
-You got reincarnated as a fearsome warrior living in the open world Mystersy - a dangerous place filled with skeletons and bats.
+1. Trong một ván cờ, khi tiến hành các nước đi, các kỳ thủ chỉ được sử dụng một tay duy nhất, và trong nước “nhập thành” thì đặc biệt phải dùng duy nhất tay phải.
 
-Try to survive, level up and prepare for your last battle against the Mega Boss. Demolish him to win the game.
+2. Khi đến lượt đi của mình, các kỳ thủ có thể sửa cho đúng ô các quân cờ với điều kiện phải thông báo trước cho đối thủ. (Nói: Sửa hoặc Tôi sửa rồi mới tiến hành sửa quân).
 
-**Controls**:
+3. Bên cạnh đó, khi còn đang trong lượt chơi của mình, nếu:
 
-- 4 arrow keys    :       Move around.
-- SPACE           :       Slash with sword (bats can't be slashed).
-- Q               :       Deliver a blow (1 out of 8 directions) dealing damage to monsters on its way.
-- E               :       Create a shield, block every attack of monsters.
-- A               :       Show where to find the Mega Boss.
-- S               :       Turn on/off background music.
-- D               :       Turn on/off sound effects.
+- Không yêu cầu được sửa mà kỳ thủ chạm tay vào quân cờ nào thì bắt buộc phải đi quân đó.
+- Tương tự, khi đụng vào quân cờ nào của đối thủ nếu có thể ăn được cũng bắt buộc phải ăn.
+4. Trong nước nhập thành nếu:
 
-**Notes**:
+- Kỳ thủ đã chạm vào Vua của mình và Xe ở phía nào thì phải nhập thành về phía đó, nếu có thể tiến hành nhập thành hợp lệ. (Xem về nước nhập thành và các nguyên tắc nhập thành hợp lệ)
+- Trong nước nhập thành, nếu kỳ thủ không chạm vào Vua trước mà chạm Xe trước thì nước nhập thành đó không được tiến hành và bắt buộc phải di chuyển xe (điều #3) do sai nguyên tắc nhập thành.
+Khi Kỳ thủ đã chạm vào quân Vua nhưng không nhập thành được do vi phạm nguyên tắc nhập thành thì bắt buộc phải di chuyển quân Vua. Nếu vua không có nước đi hợp lệ, kỳ thủ có thể đi quân khác.
 
-- Killing skeletons will grant you 1 star, killing bats will grant you 2 stars. Reach a certain number of stars to **level up** (heal to full health and increase player's stats).
+5. Nếu quân đã chạm đã chạm không có nước di chuyển hoặc ăn quân hợp lệ thì kỳ thủ có thể đi một nước cờ khác và tính “1 lỗi kỹ thuật”.
 
-- To win the game, find and kill the **Mega Boss** (**Mega Boss** will enter rage mode when its health is low).
+6. Khi đối thủ vi phạm các luật này phải bắt ngay, đến nước mới thì kỳ thủ sẽ mất quyền khiếu nại.
 
 **Link video introduce game**
 - https://www.youtube.com/watch?v=B0hHAKPgDkM
